@@ -50,6 +50,10 @@ function task.shouldExecute()
 end
 
 function task.Execute()
+    if LooteerPlugin then
+        local looting = LooteerPlugin.getSettings('looting')
+        if looting then return end
+    end
     local npc = getInteractableAzmodanAltar()
     if task.current_state == status_enum.INIT then
         init_interact()
