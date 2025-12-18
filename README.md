@@ -1,5 +1,5 @@
 # Azmodan Farm
-#### V1.0.1
+#### V1.0.2
 ## Description
 A very simple script to farm azmodan divine blessing level.
 All it does is interact altar to start event, stand afk in center while waiting for Azmodan to spawn. 
