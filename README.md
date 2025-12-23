@@ -13,6 +13,7 @@ Once Azmodan is spawned, it will stick to the boss
 ## Changelog
 ### V1.0.7
 - fix bug with string match
+
 ### V1.0.6
 - added teleport and walking to azmodan
     - orbwalker clear toggle will be turned off while walking so that it doesnt deviate from path
