@@ -31,7 +31,7 @@ local function getInteractableChest()
         then
             if chest_name == nil then
                 chest_name = key_id_chest_map[item:get_sno_id()]
-            elseif key_id_chest_map[item:get_sno_id()]:gmatch(settings.priority) then
+            elseif key_id_chest_map[item:get_sno_id()]:match(settings.priority) then
                 chest_name = key_id_chest_map[item:get_sno_id()]
             end
         end

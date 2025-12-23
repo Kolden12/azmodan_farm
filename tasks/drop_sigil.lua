@@ -21,8 +21,7 @@ function task.Execute()
     local items = local_player:get_dungeon_key_items()
     for _, item in pairs(items) do
         local name = item:get_display_name()
-        string.lower(name):gmatch('sigil')
-        if not item:is_locked() and string.lower(name):gmatch('sigil') then
+        if not item:is_locked() and string.lower(name):match('sigil') then
             loot_manager.drop_item(item)
             task.last_drop = get_time_since_inject()
             if orbwalker.get_orb_mode() == 3 then
