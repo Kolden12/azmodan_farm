@@ -1,5 +1,5 @@
 # Azmodan Farm
-#### V1.0.5
+#### V1.0.6
 ## Description
 A very simple script to farm azmodan divine blessing level.
 All it does is interact belial altar to start event, stand afk in center while waiting for Azmodan to spawn. 
@@ -11,12 +11,28 @@ Once Azmodan is spawned, it will stick to the boss
 - Afk
 
 ## Changelog
+### V1.0.6
+- added teleport and walking to azmodan
+    - clear toggle will be turned off while walking so that it doesnt deviate from path
+- added 10s delay for after opening chest
+- added keybind to drop all non-favourite sigil
+    - this can be activated even if this plugin is toggled off
+    - it also disable looter for 10 seconds
+    - usage:
+        - press toggle keybind to disable plugin before loot drops (or alternatively disable alfred so no teleport trigger)
+        - walk to an empty area
+        - filter through sigils to find mythic prankster and favourite it
+        - press drop sigil keybind
+        - walk back to original loot location
+        - repeat step 2 to 4 until no more loot in original location
+        - teleport back and clear sigils
+        - re-enable plugin/alfred
+
 ### V1.0.5
 - added chest priority
     - it will first use up all corrupted mats for the priority you set and then move on to others
 - added Andariel and Duriel altars
-    - also follows chest priority
-    - if you dont have a certain type of corrupted mats, it wont try to open that type of altar
+    - follows whichever materials u have first in inventory
 
 ### V1.0.4
 - added keybind
@@ -29,4 +45,4 @@ Once Azmodan is spawned, it will stick to the boss
     - priority = depends on how you organize your inventory
 
 ## To do
-- add chest interaction
+- update alfred integration to not trigger teleport too quickly

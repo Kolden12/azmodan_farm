@@ -7,11 +7,13 @@ local explorerlite = require "core.explorerlite"
 local status_enum = {
     INIT = "INIT",
     MOVING_TO_NPC = "MOVING_TO_NPC",
-    INTERACTING_WITH_NPC = "INTERACTING_WITH_NPC"
+    INTERACTING_WITH_NPC = "INTERACTING_WITH_NPC",
+    WAITING = 'WAITING_FOR_LOOT'
 }
 local task = {
     name = 'open_chest', -- change to your choice of task name
-    status = status_enum.INIT
+    status = status_enum.INIT,
+    last_opened = -1
 }
 local key_id_chest_map = {
     [2429465] = "S11_AzmodanTakeover_Chest_Andariel",
@@ -62,12 +64,20 @@ end
 local function interact_npc(npc)
     if npc then
         interact_object(npc)
+        task.last_opened = get_time_since_inject()
+    end
+end
+local function wait_for_loot(npc)
+    if npc then
+        interact_object(npc)
+    end
+    if task.last_opened + 10 >= get_time_since_inject() then
         task.current_state = status_enum.INIT
     end
 end
 
 function task.shouldExecute()
-    return settings.open_chest and getInteractableChest() ~= nil
+    return (settings.open_chest and getInteractableChest() ~= nil) or task.current_state == status_enum.WAITING
 end
 
 function task.Execute()
@@ -84,6 +94,8 @@ function task.Execute()
         move_to_npc(npc)
     elseif task.current_state == status_enum.INTERACTING_WITH_NPC then
         interact_npc(npc)
+    elseif task.current_state == status_enum.WAITING then
+        wait_for_loot(npc)
     end
 end
 

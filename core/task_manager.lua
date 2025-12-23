@@ -37,7 +37,7 @@ function task_manager.get_current_task()
     return current_task
 end
 
-local task_files = {'alfred', 'open_chest', 'interact_altar', 'afk'}
+local task_files = {'drop_sigil', 'alfred', 'open_chest', 'interact_altar', 'teleport', 'walk',  'afk'}
 for _, file in ipairs(task_files) do
     local task = require('tasks.' .. file)
     task_manager.register_task(task)

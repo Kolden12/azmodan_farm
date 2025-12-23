@@ -39,6 +39,9 @@ function task.shouldExecute()
 end
 
 function task.Execute()
+    if orbwalker.get_orb_mode() ~= 3 then
+        orbwalker.set_clear_toggle(true);
+    end
     local azmodan = get_azmodan_enemy()
     if azmodan ~= nil then
         explorerlite:set_custom_target(azmodan:get_position())
